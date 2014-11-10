@@ -1,5 +1,5 @@
 'use strict';
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin");
 var isChannelReady;
 var isInitiator = false;
 var isStarted = false;
