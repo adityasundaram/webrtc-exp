@@ -1,9 +1,16 @@
-var static = require('node-static');
+var static = require('express');
+var app = express()
 var http = require('http');
-var file = new(static.Server)();
-var app = http.createServer(function (req, res) {
-  file.serve(req, res);
-}).listen(2013);
+var server = require('http').Server(app)
+app.use(function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', "http://"+req.headers.host+':8000');
+
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+        next();
+    }
+);
+server.listen(2013);
 
 var io = require('socket.io').listen(app);
 io.sockets.on('connection', function (socket){
