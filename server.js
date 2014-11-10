@@ -1,5 +1,5 @@
 var static = require('express');
-var app = express()
+var app = static()
 var http = require('http');
 var server = require('http').Server(app)
 app.use(function (req, res, next) {
@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
 );
 server.listen(2013);
 
-var io = require('socket.io').listen(app);
+var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket){
 
 	function log(){
