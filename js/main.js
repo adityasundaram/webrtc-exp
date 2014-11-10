@@ -204,7 +204,6 @@ function requestTurn(turn_url) {
     console.log('Getting TURN server from ', turn_url);
     // No TURN server. Get one from computeengineondemand.appspot.com:
     var xhr = new XMLHttpRequest();
-    xhr.setRequestHeader("Accept", "text/xml");
     xhr.onreadystatechange = function(){
       if (xhr.readyState === 4 && xhr.status === 200) {
         var turnServer = JSON.parse(xhr.responseText);
