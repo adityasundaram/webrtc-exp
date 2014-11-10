@@ -7,7 +7,7 @@ var pc;
 var remoteStream;
 var turnReady;
 
-var pc_config = {'iceServers': 'iceServers': [
+var pc_config = {'iceServers': [
     {
       'url': 'stun:stun.l.google.com:19302'
     },
