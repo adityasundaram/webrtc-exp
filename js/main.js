@@ -7,7 +7,19 @@ var pc;
 var remoteStream;
 var turnReady;
 
-var pc_config = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
+var pc_config = {'iceServers': 'iceServers': [
+    {
+      'url': 'stun:stun.l.google.com:19302'
+    },
+    {
+      'url': 'turn:1415726745:41784574@107.167.183.18:3478?transport=udp',
+      'credential': 'wZKYMLLv+rWg4ALUyVzhkvkaXF0=',
+    },
+    {
+      'url': 'turn:1415726745:41784574@107.167.183.18:3478?transport=tcp',
+      'credential': 'wZKYMLLv+rWg4ALUyVzhkvkaXF0=',
+    }
+  ]};
 
 var pc_constraints = {'optional': [{'DtlsSrtpKeyAgreement': true}]};
 
