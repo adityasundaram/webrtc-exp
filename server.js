@@ -3,6 +3,11 @@ var static = require('node-static');
 var http = require('http');
 var file = new(static.Server)();
 var app = http.createServer(function (req, res) {
+	var origin = (req.headers.origin || "*");
+	res.writeHead(206,{
+		'Access-Control-Allow-Credentials':true,
+		'Access-Control-Allow-Origin':origin,
+	});
   file.serve(req, res);
 }).listen(2013);
 
