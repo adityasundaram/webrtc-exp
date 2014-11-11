@@ -141,21 +141,23 @@ window.onbeforeunload = function(e){
 
 function createPeerConnection() {
   try {
-    window.turnserversDotComAPI.iceServers(function(data) {
-    var turnServer = JSON.parse(xhr.responseText);
-        console.log('Got TURN server: ', turnServer);
-        pc_config.iceServers.push({
-          'url': 'turn:' + turnServer.username + '@' + turnServer.turn,
-          'credential': turnServer.password
-        });
-        turnReady = true;
-        console.log(pc_config.iceServers);
-});
+    
     pc = new RTCPeerConnection(null);
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
+    window.turnserversDotComAPI.iceServers(function(data) {
+    var turnServer = data;
+        console.log('Got TURN server: ', turnServer);
+        pc_config.iceServers.push({
+          'url': turnServer[1].url,
+          'credential': turnServer[1].credential,
+        });
+        turnReady = true;
+        console.log(pc_config.iceServers);
+});
     console.log('Created RTCPeerConnnection');
+
   } catch (e) {
     console.log('Failed to create PeerConnection, exception: ' + e.message);
     alert('Cannot create RTCPeerConnection object.');
