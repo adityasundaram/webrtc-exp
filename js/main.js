@@ -142,7 +142,7 @@ function createPeerConnection() {
     window.turnserversDotComAPI.iceServers(function(data) {
   pc = new RTCPeerConnection({ iceServers: data }, {});
   pc_config.iceServers.push({
-          'url': data[0].url,
+          'url': data[1].url,
           'credential': data[1].credential,
         });
         turnReady = true;
