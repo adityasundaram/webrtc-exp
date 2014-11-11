@@ -149,7 +149,7 @@ function createPeerConnection() {
           'credential': turnServer.password
         });
         turnReady = true;
-        console.log(pc_config.turnServer);
+        console.log(pc_config.iceServers);
 });
     pc = new RTCPeerConnection(null);
     pc.onicecandidate = handleIceCandidate;
