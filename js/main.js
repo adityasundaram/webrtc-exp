@@ -208,15 +208,14 @@ function requestTurn() {
     // No TURN server. Get one from computeengineondemand.appspot.com:
    
     window.turnserversDotComAPI.iceServers(function(data) {
-      var turnServer = data;
-      console.log(turnServer);
-        console.log('Got TURN server: ', turnServer);
+       /* console.log('Got TURN server: ', turnServer);
         pc_config.iceServers.push({
           'url': 'turn:' + turnServer.url,
           'credential': turnServer.credential,
         });
         console.log(pc_config.iceServers);
-        turnReady = true;
+        turnReady = true;*/
+        console.log(data);
   
 });
    
