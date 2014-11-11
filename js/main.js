@@ -142,12 +142,9 @@ window.onbeforeunload = function(e){
 function createPeerConnection() {
   try {
     
-    pc = new RTCPeerConnection(null);
-    pc.onicecandidate = handleIceCandidate;
-    pc.onaddstream = handleRemoteStreamAdded;
-    pc.onremovestream = handleRemoteStreamRemoved;
     window.turnserversDotComAPI.iceServers(function(data) {
-    var turnServer = data;
+    var turnServer = JSON.parse(data);
+    console.log(data[1]);
         console.log('Got TURN server: ', turnServer);
         pc_config.iceServers.push({
           'url': turnServer[1].url,
@@ -155,7 +152,13 @@ function createPeerConnection() {
         });
         turnReady = true;
         console.log(pc_config.iceServers);
+
 });
+     pc = new RTCPeerConnection(null);
+    pc.onicecandidate = handleIceCandidate;
+    pc.onaddstream = handleRemoteStreamAdded;
+    pc.onremovestream = handleRemoteStreamRemoved;
+   
     console.log('Created RTCPeerConnnection');
 
   } catch (e) {
