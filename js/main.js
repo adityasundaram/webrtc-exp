@@ -117,9 +117,7 @@ getUserMedia(constraints, handleUserMedia, handleUserMediaError);
 
 console.log('Getting user media with constraints', constraints);
 
-if (location.hostname != "localhost") {
-  requestTurn('https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913');
-}
+
 
 function maybeStart() {
   if (!isStarted && typeof localStream != 'undefined' && isChannelReady) {
@@ -142,8 +140,12 @@ window.onbeforeunload = function(e){
 function createPeerConnection() {
   try {
     window.turnserversDotComAPI.iceServers(function(data) {
-  pc = new RTCPeerConnection({ iceServers: data }, {})
-  console.log(data);
+  pc = new RTCPeerConnection({ iceServers: data }, {});
+  pc_config.iceServers.push({
+          'url': data[0].url,
+          'credential': data[1].credential,
+        });
+        turnReady = true;
 });
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
@@ -197,34 +199,6 @@ function setLocalAndSendMessage(sessionDescription) {
   sendMessage(sessionDescription);
 }
 
-function requestTurn(turn_url) {
-  var turnExists = false;
-  for (var i in pc_config.iceServers) {
-    if (pc_config.iceServers[i].url.substr(0, 5) === 'turn:') {
-      turnExists = true;
-      turnReady = true;
-      break;
-    }
-  }
-  if (!turnExists) {
-    console.log('Getting TURN server from ', turn_url);
-    // No TURN server. Get one from computeengineondemand.appspot.com:
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(){
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        var turnServer = JSON.parse(xhr.responseText);
-      	console.log('Got TURN server: ', turnServer);
-        pc_config.iceServers.push({
-          'url': 'turn:' + turnServer.username + '@' + turnServer.turn,
-          'credential': turnServer.password
-        });
-        turnReady = true;
-      }
-    };
-    xhr.open('GET', turn_url, true);
-    xhr.send();
-  }
-}
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
