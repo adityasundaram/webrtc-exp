@@ -145,6 +145,10 @@ function createPeerConnection() {
           'url': data[1].url,
           'credential': data[1].credential,
         });
+  pc_config.iceServers.push({
+          'url': data[2].url,
+          'credential': data[2].credential,
+        });
         turnReady = true;
 });
     pc.onicecandidate = handleIceCandidate;
