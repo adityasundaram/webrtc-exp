@@ -144,6 +144,7 @@ function createPeerConnection() {
     window.turnserversDotComAPI.iceServers(function(data) {
   pc = new RTCPeerConnection({ iceServers: data }, {});
 });
+    pc_config.iceServers = pc.iceServers;
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
