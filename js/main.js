@@ -117,9 +117,9 @@ getUserMedia(constraints, handleUserMedia, handleUserMediaError);
 
 console.log('Getting user media with constraints', constraints);
 
-/*if (location.hostname != "localhost") {
+if (location.hostname != "localhost") {
   requestTurn('https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913');
-}*/
+}
 
 function maybeStart() {
   if (!isStarted && typeof localStream != 'undefined' && isChannelReady) {
@@ -141,26 +141,11 @@ window.onbeforeunload = function(e){
 
 function createPeerConnection() {
   try {
-    
-    window.turnserversDotComAPI.iceServers(function(data) {
-    var turnServer = JSON.parse(data);
-    console.log(data[1]);
-        console.log('Got TURN server: ', turnServer);
-        pc_config.iceServers.push({
-          'url': turnServer[1].url,
-          'credential': turnServer[1].credential,
-        });
-        turnReady = true;
-        console.log(pc_config.iceServers);
-
-});
-     pc = new RTCPeerConnection(null);
+    pc = new RTCPeerConnection(null);
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
-   
     console.log('Created RTCPeerConnnection');
-
   } catch (e) {
     console.log('Failed to create PeerConnection, exception: ' + e.message);
     alert('Cannot create RTCPeerConnection object.');
