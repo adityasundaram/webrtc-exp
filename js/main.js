@@ -209,6 +209,7 @@ function requestTurn() {
    
     window.turnserversDotComAPI.iceServers(function(data) {
       var turnServer = JSON.parse(data);
+      console.log(turnServer);
         console.log('Got TURN server: ', turnServer);
         pc_config.iceServers.push({
           'url': 'turn:' + turnServer.url,
