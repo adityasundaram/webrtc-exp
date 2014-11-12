@@ -11,10 +11,8 @@ var pc_config = {'iceServers': [
     
 {url:'stun:stun.voiparound.com'},
 
-{
-    url: 'turn:28224511:1379330808@192.158.29.39:3478?transport=udp',
+{ url: 'turn:28224511:1379330808@192.158.29.39:3478?transport=udp',
     credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-    
 },
 {
     url: 'turn:28224511:1379330808@192.158.29.39:3478?transport=tcp',
