@@ -171,17 +171,7 @@ window.onbeforeunload = function(e){
 function createPeerConnection() {
   try {
     window.turnserversDotComAPI.iceServers(function(data) {
-  pc = new RTCPeerConnection({ iceServers: data }, {});
-  pc_config.iceServers.push({
-          'url': data[1].url,
-          'credential': data[1].credential,
-        });
-  pc_config.iceServers.push({
-          'url': data[2].url,
-          'credential': data[2].credential,
-        });
-        turnReady = true;
-});
+  pc = new RTCPeerConnection(null);
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
