@@ -151,7 +151,7 @@ window.onbeforeunload = function(e){
 function createPeerConnection() {
   try {
   
-  pc = new RTCPeerConnection(null);
+  pc = new RTCPeerConnection({ iceServers: pc_config.iceServers });
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
