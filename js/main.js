@@ -170,13 +170,13 @@ window.onbeforeunload = function(e){
 
 function createPeerConnection() {
   try {
-    window.turnserversDotComAPI.iceServers(function(data) {
+  
   pc = new RTCPeerConnection(null);
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
     console.log('Created RTCPeerConnnection');
-  } } catch (e) {
+   } catch (e) {
     console.log('Failed to create PeerConnection, exception: ' + e.message);
     alert('Cannot create RTCPeerConnection object.');
       return;
