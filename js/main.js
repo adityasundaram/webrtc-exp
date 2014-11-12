@@ -9,15 +9,17 @@ var turnReady=true;
 
 var pc_config = {'iceServers': [
     
-{url:'stun:stun.voiparound.com'},
+{url:'stun:stun.voipstunt.com'},
 
-{ url: 'turn:28224511:1379330808@192.158.29.39:3478?transport=udp',
+{
+    url: 'turn:192.158.29.39:3478?transport=udp',
     credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+    username: '28224511:1379330808'
 },
 {
-    url: 'turn:28224511:1379330808@192.158.29.39:3478?transport=tcp',
+    url: 'turn:192.158.29.39:3478?transport=tcp',
     credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-    
+    username: '28224511:1379330808'
 }]};
 
 var pc_constraints = {'optional': [{'DtlsSrtpKeyAgreement': true}]};
