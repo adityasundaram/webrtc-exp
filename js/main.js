@@ -10,6 +10,15 @@ var turnReady=true;
 var pc_config = {'iceServers': [
     
 {url:'stun:stun.voipstunt.com'},
+{url:'stun:stun3.l.google.com:19302'},
+{url:'stun:stun4.l.google.com:19302'},
+{url:'stun:stunserver.org'},
+{url:'stun:stun.softjoys.com'},
+{
+    url: 'turn:numb.viagenie.ca',
+    credential: 'muazkh',
+    username: 'webrtc@live.com'
+},
 
 {
     url: 'turn:192.158.29.39:3478?transport=udp',
@@ -53,7 +62,7 @@ socket.on('created', function (room){
 
 socket.on('full', function (room){
   console.log('Room ' + room + ' is full');
-});
+}); 
 
 socket.on('join', function (room){
   console.log('Another peer made a request to join room ' + room);
@@ -151,7 +160,7 @@ window.onbeforeunload = function(e){
 function createPeerConnection() {
   try {
   
-  pc = new RTCPeerConnection({ iceServers: pc_config.iceServers });
+  pc = new RTCPeerConnection(pc_config.iceServers);
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
