@@ -11,9 +11,8 @@ var pc_config = {'iceServers': [
     
 
 {
-    url: 'turn:54.148.85.89',
+    url: 'turn:aditya@54.148.85.89',
     credential: 'aditya123',
-    username: 'aditya'
 },
 
 ]};
