@@ -9,13 +9,12 @@ var turnReady=true;
 
 var pc_config = {'iceServers': [
     
-
+{url:'stun:stun.l.google.com:19302'},
 {
     url: 'turn:numb.viagenie.ca',
     credential: 'muazkh',
     username: 'webrtc@live.com'
 },
-
 ]};
 
 var pc_constraints = {'optional': [{'DtlsSrtpKeyAgreement': true}]};
