@@ -11,9 +11,9 @@ var pc_config = {'iceServers': [
     
 
 {
-    url: 'turn:numb.viagenie.ca',
-    credential: 'muazkh',
-    username: 'webrtc@live.com'
+    url: 'turn:54.148.85.89',
+    credential: 'aditya123',
+    username: 'aditya'
 },
 
 ]};
