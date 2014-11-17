@@ -145,6 +145,7 @@ function maybeStart() {
     isStarted = true;
     console.log('isInitiator', isInitiator);
     if (isInitiator) {
+      alert('Ready to make a call, press call button');
       localstartbutton.disabled=false;
     }
   }
@@ -186,6 +187,7 @@ function handleIceCandidate(event) {
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
+  alert('Ready to recieve a call, press ANSWER button');
   remoteattendbutton.disabled = false;
 }
 
