@@ -96,6 +96,7 @@ socket.on('message', function (message){
     pc.setRemoteDescription(new RTCSessionDescription(message));
     remoteattendbutton.disabled = false;
     alert('press ANSWER to recieve incoming call');
+    doAnswer();
   } else if (message.type === 'answer' && isStarted) {
     pc.setRemoteDescription(new RTCSessionDescription(message));
     console.log('answering call');
@@ -110,7 +111,7 @@ socket.on('message', function (message){
   }
 });
 
-remoteattendbutton.onclick = function() { doAnswer();};
+
 localstartbutton.onclick = function() {doCall();};
 ////////////////////////////////////////////////////
 
