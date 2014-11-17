@@ -109,7 +109,8 @@ socket.on('message', function (message){
   }
 });
 
-remoteattendbutton.onclick = function() { doAnswer();};
+remoteattendbutton.onclick = function() { remoteVideo.src = window.URL.createObjectURL(event.stream);
+  remoteStream = event.stream;};
 localstartbutton.onclick = function() {doCall();};
 ////////////////////////////////////////////////////
 
@@ -185,8 +186,7 @@ function handleIceCandidate(event) {
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
-  remoteVideo.src = window.URL.createObjectURL(event.stream);
-  remoteStream = event.stream;
+  remoteattendbutton.disabled = false;
 }
 
 function handleCreateOfferError(event){
