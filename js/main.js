@@ -218,8 +218,8 @@ function setLocalAndSendMessage(sessionDescription) {
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
-  remoteVideo.src = window.URL.createObjectURL(event.stream);
-  remoteStream = event.stream;
+  alert('Ready to recieve a call, press ANSWER button');
+  remoteattendbutton.disabled = false;
 }
 
 function handleRemoteStreamRemoved(event) {
