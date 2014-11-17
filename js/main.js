@@ -8,7 +8,7 @@ var remoteStream;
 var turnReady=true;
 var startbutton;
 var localstartbutton=document.getElementById('loc');
-localstartbutton.disable();
+localstartbutton.disabled = true;
 
 var pc_config = {'iceServers': [
     
@@ -191,10 +191,10 @@ function handleCreateOfferError(event){
 
 function doCall() {
   console.log('Sending offer to peer');
-  localstartbutton.enable();
-  localstartbutton.onClick( function() {
+  localstartbutton.disabled = false;
+ localstartbutton.onCick = function() {
     pc.createOffer(setLocalAndSendMessage, handleCreateOfferError);
-  });
+  };
   
 }
 
