@@ -1,10 +1,10 @@
-video{
-	display:inline;
-}
 
 #local,#remote{
 	padding: 5px;
 	border: solid;
 	border-radius: 4px;
 	border-style: solid;
+	height:auto;
+	width: auto;
+	display: inline-block;
 }
