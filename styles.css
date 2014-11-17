@@ -3,8 +3,10 @@
     background-color:black;
     color:white;
     text-align:center;
-    padding:5px;
+    padding:25px;
     display: block;
+    height: 50px;
+    
 }
 #nav {
     line-height:30px;
