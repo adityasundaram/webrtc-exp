@@ -21,9 +21,14 @@ var pc_config = {'iceServers': [
 {url:'stun:stun.voxgratia.org'},
 {url:'stun:stun.xten.com'},
 {
-  url: 'turn:numb.viagenie.ca',
-  credential: 'muazkh',
-  username: 'webrtc@live.com'
+  url: 'turn:107.167.183.18:3478?transport=udp',
+  credential: 'A+mGoAwEYKvPeEY7O3+SAQedWF0=',
+  username: '1416329110:41784574'
+}
+{
+  url: 'turn:107.167.183.18:3478?transport=tcp',
+  credential: 'A+mGoAwEYKvPeEY7O3+SAQedWF0=',
+  username: '1416329110:41784574'
 }
 ]};
 

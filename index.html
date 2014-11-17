@@ -13,26 +13,37 @@
 <!-- <link rel='stylesheet' href='css/main.css' /> -->
 
 </head>
-
 <body>
+
 <div id="header">
-<p> This is a simple webpage to demonstrate webRTC video stream. The video stream is relayed via a signalling server.</p>
+	<p> This is a simple webpage to demonstrate webRTC video stream. The video stream is relayed via a signalling server.</p>
 
- </div>
 
-<div id='container'>
+</div>
 
-  <div id='videos'>
+<div id="nav">
+	<h1> local video</h1>
+<div id='videos'>
   	<div id='local'>
     <video id='localVideo' autoplay muted></video> 
     <button id='loc' class='btn'> CALL </button>
 </div>
+</div>
+</div>
+
+<div id="section">
+<h1> Remote video</h1>
+<div id='videos'>
+
     <div id='remote'>
     <video id='remoteVideo' autoplay></video>
     <button id='rem' class='btn'> ANSWER </button>.
 	</div>	
 </div>
+</div>
 
+<div id="footer">
+copywhat?
 </div>
 
 <script src='/socket.io/socket.io.js'></script>
@@ -42,4 +53,14 @@
 <!-- Load the TURN Server API: -->
 
 </body>
+
+
+
+
+
+
+
+
+
+
 </html>
