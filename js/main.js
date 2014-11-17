@@ -9,6 +9,8 @@ var turnReady=true;
 var startbutton;
 var localstartbutton=document.getElementById('loc');
 localstartbutton.disabled = true;
+var remoteattendbutton = document.getElementById('rem');
+remoteattendbutton.disabled = true;
 
 var pc_config = {'iceServers': [
     
@@ -92,7 +94,7 @@ socket.on('message', function (message){
       maybeStart();
     }
     pc.setRemoteDescription(new RTCSessionDescription(message));
-    doAnswer();
+    remoteattendbutton.disabled = false;
   } else if (message.type === 'answer' && isStarted) {
     pc.setRemoteDescription(new RTCSessionDescription(message));
     console.log('answering call');
@@ -107,6 +109,8 @@ socket.on('message', function (message){
   }
 });
 
+remoteattendbutton.onclick = function() { doAnswer();};
+localstartbutton.onclick = function() {doCall();};
 ////////////////////////////////////////////////////
 
 var localVideo = document.querySelector('#localVideo');
@@ -140,7 +144,7 @@ function maybeStart() {
     isStarted = true;
     console.log('isInitiator', isInitiator);
     if (isInitiator) {
-      doCall();
+      localstartbutton.disabled=false;
     }
   }
 }
@@ -191,10 +195,8 @@ function handleCreateOfferError(event){
 
 function doCall() {
   console.log('Sending offer to peer');
-  localstartbutton.disabled = false;
- localstartbutton.onCick = function() {
-    pc.createOffer(setLocalAndSendMessage, handleCreateOfferError);
-  };
+  pc.createOffer(setLocalAndSendMessage, handleCreateOfferError);
+
   
 }
 
