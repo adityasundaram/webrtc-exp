@@ -94,7 +94,8 @@ socket.on('message', function (message){
       maybeStart();
     }
     pc.setRemoteDescription(new RTCSessionDescription(message));
-    doAnswer();
+    remoteattendbutton.disabled = false;
+    alert('press ANSWER to recieve incoming call');
   } else if (message.type === 'answer' && isStarted) {
     pc.setRemoteDescription(new RTCSessionDescription(message));
     console.log('answering call');
@@ -109,8 +110,7 @@ socket.on('message', function (message){
   }
 });
 
-remoteattendbutton.onclick = function() { remoteVideo.src = window.URL.createObjectURL(event.stream);
-  remoteStream = event.stream;};
+remoteattendbutton.onclick = function() { doAnswer();};
 localstartbutton.onclick = function() {doCall();};
 ////////////////////////////////////////////////////
 
@@ -145,8 +145,8 @@ function maybeStart() {
     isStarted = true;
     console.log('isInitiator', isInitiator);
     if (isInitiator) {
-      alert('Ready to make a call, press call button');
       localstartbutton.disabled=false;
+      alert('press CALL to make a call');
     }
   }
 }
@@ -187,8 +187,8 @@ function handleIceCandidate(event) {
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
-  alert('Ready to recieve a call, press ANSWER button');
-  remoteattendbutton.disabled = false;
+  remoteVideo.src = window.URL.createObjectURL(event.stream);
+  remoteStream = event.stream;
 }
 
 function handleCreateOfferError(event){
@@ -218,8 +218,8 @@ function setLocalAndSendMessage(sessionDescription) {
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
-  alert('Ready to recieve a call, press ANSWER button');
-  remoteattendbutton.disabled = false;
+  remoteVideo.src = window.URL.createObjectURL(event.stream);
+  remoteStream = event.stream;
 }
 
 function handleRemoteStreamRemoved(event) {
