@@ -94,7 +94,7 @@ socket.on('message', function (message){
       maybeStart();
     }
     pc.setRemoteDescription(new RTCSessionDescription(message));
-    remoteattendbutton.disabled = false;
+    doAnswer();
   } else if (message.type === 'answer' && isStarted) {
     pc.setRemoteDescription(new RTCSessionDescription(message));
     console.log('answering call');
