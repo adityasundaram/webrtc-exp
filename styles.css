@@ -130,7 +130,9 @@ body{text-align:center;}
 
 
 /* Basic Element Formatting */
-
+video{
+	visibility: visible;
+}
 #header{
 	height:100px;
 	background-color:#F3F2ED;
