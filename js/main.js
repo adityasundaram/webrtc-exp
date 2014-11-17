@@ -7,7 +7,7 @@ var pc;
 var remoteStream;
 var turnReady=true;
 var startbutton;
-localstartbutton=document.getElementById('loc');
+var localstartbutton=document.getElementById('loc');
 localstartbutton.disable();
 
 var pc_config = {'iceServers': [
