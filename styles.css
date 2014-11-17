@@ -6,13 +6,13 @@
     padding:25px;
     display: block;
     height: 50px;
-    
+
 }
 #nav {
     line-height:30px;
     background-color:#eeeeee;
-    height:300px;
-    width:40%;
+    height:auto;
+    width:50%;
     float:left;
     padding:5px;
     display: inline-block; 
