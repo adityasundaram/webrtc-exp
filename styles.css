@@ -4,19 +4,20 @@
     color:white;
     text-align:center;
     padding:5px;
+    display: block;
 }
 #nav {
     line-height:30px;
     background-color:#eeeeee;
     height:300px;
-    width:50%;
+    width:40%;
     float:left;
     padding:5px;
     display: inline-block; 
     float: left;
 }
 #section {
-    width:50%;
+    width:40%;
     float:left;
     padding:10px; 
     display: inline-block;
