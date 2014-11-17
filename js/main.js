@@ -192,7 +192,7 @@ function handleCreateOfferError(event){
 function doCall() {
   console.log('Sending offer to peer');
   localstartbutton.enable();
-  localstartbutton.onClick( funcion() {
+  localstartbutton.onClick( function() {
     pc.createOffer(setLocalAndSendMessage, handleCreateOfferError);
   });
   
